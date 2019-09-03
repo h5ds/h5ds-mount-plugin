@@ -1,5 +1,5 @@
 // 手动挂载插件
-export function mountPlugin(data) {
+function mountPlugin(data) {
   if (!window.H5DS_GLOBAL) {
     window.H5DS_GLOBAL = {
       plugins: {}
@@ -10,8 +10,10 @@ export function mountPlugin(data) {
 }
 
 // 卸载插件
-export function unmountPlugin(pluginName) {
+function unmountPlugin(pluginName) {
   if (window.H5DS_GLOBAL) {
     delete window.H5DS_GLOBAL.plugins[pluginName];
   }
 }
+
+export { mountPlugin, unmountPlugin };

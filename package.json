@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpackset/webpack.config.dev.js --open",
-    "build": "webpack --config webpackset/webpack.config.prod.js --colors --display-error-details --progress"
+    "build": "webpack --config webpackset/webpack.config.prod.js --colors --display-error-details --progress",
+    "publish": "npm run build && cd ./dist && npm publish"
   },
   "repository": {
     "type": "git",

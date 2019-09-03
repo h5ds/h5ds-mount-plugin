@@ -1,4 +1,4 @@
-const { resolve, webPath, previewPath, theme, version } = require('./config');
+const { resolve } = require('./config');
 
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -16,6 +16,13 @@ module.exports = webpackMerge(baseConfig, {
   },
   mode: 'development',
   devtool: 'source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: false,
+      template: resolve('../src/index.html'),
+      filename: 'index.html'
+    })
+  ],
   devServer: {
     host: '127.0.0.1',
     port: 8082,

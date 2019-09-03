@@ -13,24 +13,9 @@ module.exports = webpackMerge(baseConfig, {
     publicPath: '/',
     path: resolve('../dist'),
     filename: `[name].js`,
-    libraryExport: 'default',
     libraryTarget: 'umd'
   },
   mode: 'production',
-  optimization: {
-    minimizer: [],
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: 'common',
-          priority: 10,
-          test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-          minChunks: 4 // 引用1次就要打包出来
-        }
-      }
-    }
-  },
   plugins: [
     new Uglifyjs(),
     new CleanWebpackPlugin({

@@ -1,14 +1,14 @@
 const { resolve } = require('./config');
-
+const nodeExternals = require('webpack-node-externals');
 // webpack 配置文档
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.esm', '.css', '.less'],
     alias: {}
   },
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -22,12 +22,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new CaseSensitivePathsPlugin(),
-    new HtmlWebpackPlugin({
-      hash: false,
-      template: resolve('../src/index.html'),
-      filename: 'index.html'
-    })
-  ]
+  plugins: [new CaseSensitivePathsPlugin()]
 };
